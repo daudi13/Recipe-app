@@ -1,23 +1,29 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">ReceipeApp</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+    <%= link_to 'Recipe App', '/', class:'navbar-brand' %>
+    <div class="navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto ">
         <li class="nav-item">
-          <%= link_to "Public recipes", public_recipes_path, class: "nav-link" %>
+          <%= link_to "Public recipes", root_path ,class:'navbar-brand  ' %>
+        </li>
+        <% unless user_signed_in? %>
+        <li class="nav-item">
+         <%= link_to 'Sign Up', new_user_registration_path, class:'navbar-brand  ' %> 
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <%= link_to 'Sign In', new_user_session_path, class:'navbar-brand  ' %>
+        </li>
+        <% else %>
+        <li class="nav-item">
+          <%= link_to 'New recipe', new_recipe_path , class:'navbar-brand  '%>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <%= link_to 'My recipes', recipes_path , class:'navbar-brand  '%>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+          <%= button_to 'Sign Out', destroy_user_session_path, :method => :delete, class:'navbar-brand' %> 
         </li>
+         <% end %>
       </ul>
     </div>
   </div>
