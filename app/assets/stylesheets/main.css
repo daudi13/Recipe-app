@@ -1,3 +1,9 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .recipe--header {
   display: flex;
   justify-content: space-between;
@@ -21,4 +27,27 @@
 .recipe-box > * + * {
   margin-top: 1.5rem;
 }
+
+.title {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.buttons {
+  max-width: 600px;
+  margin: 3rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
 
