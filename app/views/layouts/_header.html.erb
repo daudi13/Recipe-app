@@ -1,0 +1,14 @@
+<div class="flex justify-between items-center pr-8 bg-neutral-400 h-14 text-xl">
+  <%= link_to 'Recipe App', '/' %>
+  <ul class="flex flex-row gap-x-8">
+    <li> 
+      <%= link_to 'Sign Up', new_user_registration_path, class: "items-center" %> 
+    </li>
+    <li>
+      <%= link_to 'Sign In', new_user_session_path %>
+    </li>
+    <li>
+      <%= link_to 'Recipe' %>
+    </li>
+  </ul>
+</div>
