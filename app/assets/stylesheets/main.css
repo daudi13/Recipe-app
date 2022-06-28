@@ -33,7 +33,6 @@
   margin: 2rem 0;
 }
 
-
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -48,6 +47,3 @@
   align-items: center;
   justify-content: space-between;
 }
-
-
-
