@@ -1,5 +1,8 @@
 class RecipeFoodsController < ApplicationController
-  def index; end
+  def new
+    @foods = current_user.foods
+    @recipe = Recipe.find(params[:recipe_id])
+  end
 
-  def show; end
+  
 end
