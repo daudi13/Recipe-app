@@ -31,4 +31,15 @@ class RecipesController < ApplicationController
       'failed to update recipe status'
     end
   end
+
+  def destroy
+    @recipe = Recipe.find(params[:id])
+
+    flash[:notice] = if @recipe.destroy
+      'Recipe deleted successfully'
+    else
+      'Failed to delete recipe'
+    end
+    redirect_to recipes_path
+  end
 end
