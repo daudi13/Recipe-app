@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    authenticate_and_user!(@recipe)
+    autheniticate_and_show!(@recipe)
   end
 
   def create

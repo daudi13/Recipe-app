@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root "public_recipes#index" 
 
   resources :foods, only: [:index, :show]
-  resources :recipes, only: [:index, :show, :create, :new, :destroy] do
+  resources :recipes, only: [:index, :show, :create, :new, :destroy, :update] do
     resources :recipes_foods, only: [:new, :create]
   end
   resources :public_recipes, only: [:index, :show]
