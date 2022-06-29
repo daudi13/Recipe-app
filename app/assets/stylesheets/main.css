@@ -47,3 +47,13 @@
   align-items: center;
   justify-content: space-between;
 }
+
+
+.public {
+  border: 1px solid black;
+  max-width: 600px;
+  padding: 10px 30px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
