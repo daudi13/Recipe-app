@@ -1,0 +1,21 @@
+<div  class="form-heading">
+  <h2>Add New Food</h2>
+  <hr style="margin: 5px auto;">
+</div>
+
+<div class="form-group">
+  <%= form_with(model: @food) do |f| %>
+    <div class="field">
+      <%= f.text_field :food, placeholder: "Food Name", autofocus: true %>
+    </div>
+    <div class="field">
+      <%= f.text_field :measurement_unit, autocomplete: "measurement_unit", placeholder: "Measurement Unit (e.g grams, kilograms etc)" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :unit_price, placeholder: "Unit Price (e.g 10, 20 etc)" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Add Food" %>
+    </div>
+  <% end %>
+<div> 
