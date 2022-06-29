@@ -9,4 +9,15 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     authenticate_and_user!(@recipe)
   end
+
+  def create
+    @recipe = Recipe.new(recipe_params)
+    @recipe.user = current_user
+    if @recipe.save
+      flash[:notice] = 'Recipe created successfully'
+      redirect_to recipes_path
+    else 
+      render 'new'
+      flash[:notice] = 'Recipe not created'
+  end
 end
