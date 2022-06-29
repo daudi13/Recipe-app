@@ -20,4 +20,15 @@ class RecipesController < ApplicationController
       render 'new'
       flash[:notice] = 'Recipe not created'
   end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    @recipe.public = !@recipe.Public
+
+    flash[:notice] = if @recipe.save
+      'This recipe is now #{@recipe.public ? "public" : "private"}'
+    else
+      'failed to update recipe status'
+    end
+  end
 end
