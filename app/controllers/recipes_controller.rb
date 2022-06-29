@@ -42,4 +42,21 @@ class RecipesController < ApplicationController
     end
     redirect_to recipes_path
   end
+
+  private
+
+  def autheniticate_and_show!(recipe)
+    return if recipe.public
+
+    authenticate_user!
+
+    return unless recipe.user.id !=current_user.id
+
+    flash[:notice] = 'You are not authorized to view this recipe'
+    redirect_to public_recipes_path
+  end
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :description, :preperation_time, :cooking_time)
+  end
 end
