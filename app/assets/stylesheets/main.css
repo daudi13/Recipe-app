@@ -57,3 +57,16 @@
   margin-bottom: 20px;
 }
 
+
+.recipe-form {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input {
+  max-width: 400px !important;
+}
