@@ -19,6 +19,7 @@ class RecipesController < ApplicationController
     else 
       render 'new'
       flash[:notice] = 'Recipe not created'
+    end
   end
 
   def update
@@ -30,6 +31,10 @@ class RecipesController < ApplicationController
     else
       'failed to update recipe status'
     end
+  end
+
+  def new
+    @recipe = Recipe.new
   end
 
   def destroy
