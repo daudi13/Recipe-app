@@ -13,7 +13,7 @@ class RecipeFoodsController < ApplicationController
     new_recipe_item.food_id = food.id
 
     if new_recipe_item.save
-      flash[:notice] = 'You have successfully added a new ingredient'
+      flash[:notice] = 'Ingredient successfully added'
       redirect_to recipe_path(recipe)
     else
       flash[:notice] = 'Ingredient not added'
