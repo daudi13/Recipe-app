@@ -5,5 +5,8 @@ class RecipesController < ApplicationController
     @recipes = @user.recipes.all
   end
 
-  def show; end
+  def show
+    @recipe = Recipe.find(params[:id])
+    authenticate_and_user!(@recipe)
+  end
 end
