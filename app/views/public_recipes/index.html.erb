@@ -13,45 +13,19 @@
 </div>
 
 <div class="recipe--wrapper">
-<div class="recipe-box public">
-<div class="recipe-left">
-<h4>Simple Dish</h4>
-<h6>by: David </h6>
-</div>
-<div class="recipe-right">
-<h5>Total food items: 4</h5>
-<h5>Total price: $203</h5>
-</div>
-</div>
-<div class="recipe-box public">
-<div class="recipe-left">
-<h4>Too much salt</h4>
-<h6>by: Abenezer</h6>
-</div>
-<div class="recipe-right">
-<h5>Total food items: 4</h5>
-<h5>Total price: $203</h5>
-</div>
-</div>
-<div class="recipe-box public">
-<div class="recipe-left">
-<h4>Happy meal</h4>
-<h6>by: Mike</h6>
-</div>
-<div class="recipe-right">
-<h5>Total food items: 4</h5>
-<h5>Total price: $203</h5>
-</div>
-</div>
-<div class="recipe-box public">
-<div class="recipe-left">
-<h4>Free Lunch</h4>
-<h6>by: Chef</h6>
-</div>
-<div class="recipe-right">
-<h5>Total food items: 4</h5>
-<h5>Total price: $203</h5>
-</div>
-</div>
+<% @public_recipe.each do |item| %>
+  <%= link_to recipe_path(item[:recipe]) do %>
+    <div class="recipe-box public">
+    <div class="recipe-left">
+    <h4><%= item[:recipe].name %></h4>
+    <h6>by: <%= item[:recipe].user.name %></h6>
+    </div>
+    <div class="recipe-right">
+    <h5>Total food items: <%= item[:foods_quantity] %></h5>
+    <h5>Total price: <%= item[:price_total] %></h5>
+    </div>
+    </div>
+  <%end%>
+<%end%>
 </div>
 </section>
