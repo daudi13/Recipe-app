@@ -1,0 +1,10 @@
+<tr>
+  <td><%= food.food %></td>
+  <td><%= food.measurement_unit %></td>
+  <td>$<%= food.unit_price %></td>
+  <td>
+  <% if can? :destroy, food %>
+    <%= button_to "Delete Food", food, method: :delete, class:"btn btn-danger"%>
+  <% end %>
+  </td>
+</tr> 
