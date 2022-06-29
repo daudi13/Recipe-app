@@ -1,1 +1,57 @@
+<section class='recipe-container'>
+
+<div class="recipe--header">
 <h1>Public Recipes</h1>
+
+<div class="flex flex-col mx-6 mt-6 gap-12">
+  <div class="w-full text-right pr-6">
+    <%=form_with model: Recipe.new, url: new_recipe_path, method: :get do %>
+      <button class="px-4 py-2 shadow-md shadow-black">Add recipe</button>
+    <% end %>
+  </div>
+</div>
+</div>
+
+<div class="recipe--wrapper">
+<div class="recipe-box public">
+<div class="recipe-left">
+<h4>Simple Dish</h4>
+<h6>by: David </h6>
+</div>
+<div class="recipe-right">
+<h5>Total food items: 4</h5>
+<h5>Total price: $203</h5>
+</div>
+</div>
+<div class="recipe-box public">
+<div class="recipe-left">
+<h4>Too much salt</h4>
+<h6>by: Abenezer</h6>
+</div>
+<div class="recipe-right">
+<h5>Total food items: 4</h5>
+<h5>Total price: $203</h5>
+</div>
+</div>
+<div class="recipe-box public">
+<div class="recipe-left">
+<h4>Happy meal</h4>
+<h6>by: Mike</h6>
+</div>
+<div class="recipe-right">
+<h5>Total food items: 4</h5>
+<h5>Total price: $203</h5>
+</div>
+</div>
+<div class="recipe-box public">
+<div class="recipe-left">
+<h4>Free Lunch</h4>
+<h6>by: Chef</h6>
+</div>
+<div class="recipe-right">
+<h5>Total food items: 4</h5>
+<h5>Total price: $203</h5>
+</div>
+</div>
+</div>
+</section>
