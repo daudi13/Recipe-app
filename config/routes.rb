@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
+  get 'shopping_lists', to: 'shopping_lists#index'
+
   devise_scope :user do
     authenticated :user do
       root :to => "foods#index" , as: :authenticated_root
@@ -23,5 +25,5 @@ root "public_recipes#index"
   resource :recipes, only: [:index, :show]
   resources :foods, except: [:update]
   resource :recipes_details, onlys: []
-  resource :shopping_lists, only: []
+  resource :shopping_lists, only: [:index]
 end
