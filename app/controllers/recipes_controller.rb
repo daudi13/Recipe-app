@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
     if @recipe.save
       flash[:notice] = 'Recipe created successfully'
       redirect_to recipes_path
-    else 
+    else
       render 'new'
       flash[:notice] = 'Recipe not created'
     end
@@ -27,10 +27,10 @@ class RecipesController < ApplicationController
     @recipe.public = !@recipe.public
 
     flash[:notice] = if @recipe.save
-      'This recipe is now #{@recipe.public ? "public" : "private"}'
-    else
-      'failed to update recipe status'
-    end
+                       %(This recipe is now #{@recipe.public ? 'public' : 'private'})
+                     else
+                       'failed to update recipe status'
+                     end
   end
 
   def new
@@ -41,10 +41,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     flash[:notice] = if @recipe.destroy
-      'Recipe deleted successfully'
-    else
-      'Failed to delete recipe'
-    end
+                       'Recipe deleted successfully'
+                     else
+                       'Failed to delete recipe'
+                     end
     redirect_to recipes_path
   end
 
@@ -55,7 +55,7 @@ class RecipesController < ApplicationController
 
     authenticate_user!
 
-    return unless recipe.user.id !=current_user.id
+    return unless recipe.user.id != current_user.id
 
     flash[:notice] = 'You are not authorized to view this recipe'
     redirect_to public_recipes_path
