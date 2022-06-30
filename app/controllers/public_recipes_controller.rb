@@ -11,6 +11,7 @@ class PublicRecipesController < ApplicationController
       public_recipe[:price_total] = recipe.recipe_foods.reduce(0) do |price_total, recipe_food|
         price_total + (recipe_food.food.price * recipe_food.quantity)
       end
+      @public_recipe_data << public_recipe
     end
   end
 end
