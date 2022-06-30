@@ -16,8 +16,8 @@
 <% @recipes.each do |recipe| %>
   <div class="recipe-box">
 <div class="recipe-left">
-  <h4>recipe.name</h4>
-  <%=form_with model: Recipe.new, url recipe_path(recipe), method: :delete do %>
+  <h4><%= recipe.name %></h4>
+  <%=form_with model: Recipe.new, url: recipe_path(recipe), method: :delete do %>
     <button>remove</button>
   <%end%>
 </div>
