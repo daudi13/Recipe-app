@@ -6,9 +6,6 @@
         <li class="nav-item">
           <%= link_to "Public recipes", root_path ,class:'navbar-brand  ' %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'My recipes', recipes_path , class:'navbar-brand  '%>
-        </li>
         <% unless user_signed_in? %>
         <li class="nav-item">
          <%= link_to 'Sign Up', new_user_registration_path, class:'navbar-brand  ' %> 
@@ -18,7 +15,13 @@
         </li>
         <% else %>
         <li class="nav-item">
-          <%= link_to 'New recipe', new_recipes_details_path, class:'navbar-brand  '%>
+          <%= link_to 'My recipes', recipes_path , class:'navbar-brand  '%>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'New recipe', new_recipe_path, class:'navbar-brand  '%>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'My Foods', foods_path, class:'navbar-brand  '%>
         </li>
         <li class="nav-item">
           <%= button_to 'Sign Out', destroy_user_session_path, :method => :delete, class:'navbar-brand' %> 

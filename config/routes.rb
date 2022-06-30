@@ -8,14 +8,6 @@ Rails.application.routes.draw do
 
   get 'shopping_lists', to: 'shopping_lists#index'
 
-  devise_scope :user do
-    authenticated :user do
-      root :to => "foods#index" , as: :authenticated_root
-    end
-    unauthenticated :user do
-      root :to => "public_recipes#index", as: :unauthenticated_root
-    end
-  end
 
   # Defines the routes for the Users controller
   
