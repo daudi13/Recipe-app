@@ -22,8 +22,9 @@ Rails.application.routes.draw do
 root "public_recipes#index"
   resources :users, only: [:index]
   resource :public_recipes, only: [:index, :show]
-  resource :recipes, only: [:index, :show]
+  resources :recipes, only: [:index, :show, :create, :new, :destroy, :update] do
+    resources :recipe_foods, only: [:new, :create]
+  end
   resources :foods, except: [:update]
-  resource :recipes_details, onlys: []
   resource :shopping_lists, only: [:index]
 end

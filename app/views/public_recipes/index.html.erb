@@ -1,1 +1,23 @@
+<section class='recipe-container'>
+
+<div class="recipe--header">
 <h1>Public Recipes</h1>
+</div>
+
+<div class="recipe--wrapper">
+<% @public_recipe.each do |item| %>
+  <%= link_to recipe_path(item[:recipe]) do %>
+    <div class="recipe-box public">
+    <div class="recipe-left">
+    <h4><%= item[:recipe].name %></h4>
+    <h6>by: <%= item[:recipe].user.email %></h6>
+    </div>
+    <div class="recipe-right">
+    <h5>Total food items: <%= item[:foods_quantity] %></h5>
+    <h5>Total price: <%= item[:price_total] %></h5>
+    </div>
+    </div>
+  <%end%>
+<%end%>
+</div>
+</section>

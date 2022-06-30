@@ -1,0 +1,32 @@
+<h1 class="text-l font-bold w-full text-center mt-12">Create new recipe</h1>
+
+<% if @recipe.errors.any? %>
+        <ul>
+            <% @recipe.errors.full_messages.each do |m| %>
+                <li><%= m %></li>
+            <% end %>
+        </ul>
+<% end %>
+<%= form_for @recipe do |f| %>
+    <div class="recipe-form">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "input" %>
+        <div class="inline-block">
+        <%= f.label :description, class: "input" %>
+        </div>
+        <%= f.text_area :description, class: "input" %>
+        <div class="inline-block">
+            <%= f.label :preparation_time, class: "input" %>
+            <%= "(minutes)" %>
+        </div>
+        <%= f.text_field :preparation_time, class: "input" %>
+        <div class="inline-block">
+            <%= f.label :cooking_time, class: "input" %>
+            <%= "(minutes)" %>
+        </div>
+        <%= f.text_field :cooking_time, class: "input" %>
+        <div class=" flex w-full bg-sky-500 cursor-pointer text-white font-medium justify-center py-2">
+          <%= f.submit %>
+        </div>
+    </div>
+<% end %>
