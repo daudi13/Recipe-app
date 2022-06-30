@@ -13,82 +13,20 @@
 </div>
 
 <div class="recipe--wrapper">
-<div class="recipe-box">
+<% @recipes.each do |recipe| %>
+  <div class="recipe-box">
 <div class="recipe-left">
-<h4>Recipe 1</h4>
-<a href="#">remove</a>
+  <h4>recipe.name</h4>
+  <%=form_with model: Recipe.new, url recipe_path(recipe), method: :delete do %>
+    <button>remove</button>
+  <%end%>
 </div>
 <div class="recipe-right">
-<p>
-The app will have some common interfaces, but depending on your team size it will have a couple of extra ones. These are some of the interfaces and some wireframes for some of them
-</p>
+  <p>
+    <%= recipe.description %>
+  </p>
 </div>
 </div>
-<div class="recipe-box">
-<div class="recipe-left">
-<h4>Recipe 2</h4>
-<a href="#">remove</a>
-</div>
-<div class="recipe-right">
-<p>
-The app will have some common interfaces, but depending on your team size it will have a couple of extra ones. These are some of the interfaces and some wireframes for some of them
-</p>
-</div>
-</div>
-<div class="recipe-box">
-<div class="recipe-left">
-<h4>Recipe 4</h4>
-<a href="#">remove</a>
-</div>
-<div class="recipe-right">
-<p>
-The app will have some common interfaces, but depending on your team size it will have a couple of extra ones. These are some of the interfaces and some wireframes for some of them
-</p>
-</div>
-</div>
-<div class="recipe-box">
-<div class="recipe-left">
-<h4>Recipe 4</h4>
-<a href="#">remove</a>
-</div>
-<div class="recipe-right">
-<p>
-The app will have some common interfaces, but depending on your team size it will have a couple of extra ones. These are some of the interfaces and some wireframes for some of them
-</p>
-</div>
-</div>
-<div class="recipe-box">
-<div class="recipe-left">
-<h4>Recipe 5</h4>
-<a href="#">remove</a>
-</div>
-<div class="recipe-right">
-<p>
-The app will have some common interfaces, but depending on your team size it will have a couple of extra ones. These are some of the interfaces and some wireframes for some of them
-</p>
-</div>
-</div>
-<div class="recipe-box">
-<div class="recipe-left">
-<h4>Recipe 6</h4>
-<a href="#">remove</a>
-</div>
-<div class="recipe-right">
-<p>
-The app will have some common interfaces, but depending on your team size it will have a couple of extra ones. These are some of the interfaces and some wireframes for some of them
-</p>
-</div>
-</div>
-<div class="recipe-box">
-<div class="recipe-left">
-<h4>Recipe 7</h4>
-<a href="#">remove</a>
-</div>
-<div class="recipe-right">
-<p>
-The app will have some common interfaces, but depending on your team size it will have a couple of extra ones. These are some of the interfaces and some wireframes for some of them
-</p>
-</div>
-</div>
+<%end%>
 </div>
 </section>
