@@ -1,14 +1,1 @@
-<%= form_with model: RecipeFood.new, url: recipe_recipe_foods_path(@recipe), method: :post do |form| %>
-  <div class="flex flex-col w-72 my-2 gap-y-2 mx-auto">
-  <h1 class="title">Select ingredient for: <%= @recipe.name %></h1>
-  <div class="flex flex-row items-center">
-  <%= form.label :food, class: "w-20"%>
-  <%= form.select :food, :food, @foods.map {|food| [food.name, food.id]}, class: "flex-shrink w-40"%>
-  </div>
-  <div class="flex flex-row items-center">
-    <%= form.text_field :quantity, class: "flex-shrink w-48" %>
-    <div class="submit-button">
-        <%= form.submit "Add ingredient" %>
-    </div>
-  </div>
-<%end>
+<h1>Hello food</h1>

@@ -24,7 +24,7 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    @recipe.public = !@recipe.Public
+    @recipe.public = !@recipe.public
 
     flash[:notice] = if @recipe.save
       'This recipe is now #{@recipe.public ? "public" : "private"}'
