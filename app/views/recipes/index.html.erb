@@ -16,9 +16,9 @@
 <% @recipes.each do |recipe| %>
   <div class="recipe-box">
 <div class="recipe-left">
-  <h4><%= recipe.name %></h4>
+  <h6><%= recipe.name %></h6>
   <%=form_with model: Recipe.new, url: recipe_path(recipe), method: :delete do %>
-    <button>remove</button>
+    <button class="px-2 py-1">remove</button>
   <%end%>
 </div>
 <div class="recipe-right">
