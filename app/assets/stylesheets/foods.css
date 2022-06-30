@@ -1,0 +1,6 @@
+.foods-btn {
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

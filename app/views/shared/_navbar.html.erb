@@ -18,7 +18,7 @@
         </li>
         <% else %>
         <li class="nav-item">
-          <%= link_to 'New recipe', new_recipe_path , class:'navbar-brand  '%>
+          <%= link_to 'New recipe', new_recipes_details_path, class:'navbar-brand  '%>
         </li>
         <li class="nav-item">
           <%= button_to 'Sign Out', destroy_user_session_path, :method => :delete, class:'navbar-brand' %> 

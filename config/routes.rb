@@ -6,12 +6,25 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  root "public_recipes#index" 
+  get 'shopping_lists', to: 'shopping_lists#index'
 
-  resources :foods, only: [:index, :show]
+  devise_scope :user do
+    authenticated :user do
+      root :to => "foods#index" , as: :authenticated_root
+    end
+    unauthenticated :user do
+      root :to => "public_recipes#index", as: :unauthenticated_root
+    end
+  end
+
+  # Defines the routes for the Users controller
+  
+root "public_recipes#index"
+  resources :users, only: [:index]
+  resource :public_recipes, only: [:index, :show]
   resources :recipes, only: [:index, :show, :create, :new, :destroy, :update] do
     resources :recipe_foods, only: [:new, :create]
   end
-  resources :public_recipes, only: [:index, :show]
-  resources :shopping_lists, only: []
+  resources :foods, except: [:update]
+  resource :shopping_lists, only: [:index]
 end
