@@ -1,23 +1,24 @@
-<section class='recipe-container'>
-
-<div class="recipe--header">
-<h1>Public Recipes</h1>
-</div>
-
-<div class="recipe--wrapper">
-<% @public_recipe.each do |item| %>
-  <%= link_to recipe_path(item[:recipe]) do %>
-    <div class="recipe-box public">
-    <div class="recipe-left">
-    <h4><%= item[:recipe].name %></h4>
-    <h6>by: <%= item[:recipe].user.email %></h6>
-    </div>
-    <div class="recipe-right">
-    <h5>Total food items: <%= item[:foods_quantity] %></h5>
-    <h5>Total price: <%= item[:price_total] %></h5>
-    </div>
-    </div>
-  <%end%>
-<%end%>
-</div>
+<section class="public_recipe_container">
+  <div class="row">
+    <% if @recipes.empty? %>
+      <h2>You don't have any existing recipe of your own!</h2>
+    <% else %>
+      <% @recipes.each do |recipe| %>
+        <div class="block">
+          <div class="public_recipe">
+              <div class="recipe-box public">
+                <div class="recipe-left">
+                  <h4 class="recipe-name"><%= recipe.name %></h4>
+                  <span class="recipe-author">By: <strong><%= recipe.user.name %></strong></span>
+                </div>
+                <div class="right">
+                  <span class="number-food">Total food items: <strong><%= @recipe_foods.length %></strong></span>
+                  <span class="total-price">Total price: <strong>$<%= @recipes.name %>.00</strong></span>
+                </div>
+              </div>
+            </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </section>
