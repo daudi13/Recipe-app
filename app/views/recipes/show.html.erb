@@ -23,7 +23,7 @@
       </div>
 </div>
 <div class="buttons">
-<button class="rounded px-4 py-2 shadow-sm border-2" >Generate shopping list</button>
+        <a href="/shopping_list/<%= @recipe.id %>" class="rounded px-4 py-2 shadow-sm border-2">Generate Shopping List</a>
 <%=form_with model: RecipeFood.new, url: new_recipe_recipe_food_path(@recipe), method: :get do %>
   <button class="rounded px-4 py-2 shadow-sm border-2">Add ingredient</button>
 <%end%>
