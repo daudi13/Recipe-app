@@ -54,6 +54,11 @@
   padding: 10px 30px;
   align-items: center;
   margin-bottom: 20px;
+  border-radius: 6px;
+}
+
+.row {
+  margin-top: 6rem;
 }
 
 .recipe-form {
