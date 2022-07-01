@@ -1,14 +1,15 @@
 <section class="public_recipe_container">
   <div class="row">
+  <h2 class='text-4xl font-semibold font-serif my-6 text-center'>Public Recipes</h2>
     <% if @public_recipe.empty? %>
-      <h2>You don't have any existing recipe of your own!</h2>
+      <h2 class='text-4xl font-semibold font-serif my-6 text-center' >You don't have any existing recipe of your own!</h2>
     <% else %>
       <% @public_recipe.each do |public| %>
         <div class="block">
           <div class="public_recipe">
               <div class="recipe-box public">
                 <div class="recipe-left">
-                  <h4 class="recipe-name"><%= public[:recipe].name %></h4>
+                  <h4 class="recipe-name text-2xl font-bold'"><%= public[:recipe].name %></h4>
                   <span class="recipe-author">By: <strong><%= public[:recipe].user.name %></strong></span>
                 </div>
                 <div class="right">
