@@ -37,4 +37,9 @@ RSpec.describe Recipe, type: :model do
     @recipe.user = User.create(name: 'Test', email: 'test@mail.com', password: 'password', password_confirmation: 'password')
     expect(@recipe).to be_valid
   end
+
+  it 'should have a public attribute' do
+    @recipe.public = true
+    expect(@recipe).to be_valid
+  end
 end
