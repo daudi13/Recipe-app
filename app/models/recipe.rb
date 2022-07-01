@@ -7,9 +7,4 @@ class Recipe < ApplicationRecord
   # validates :description, presence: true
   # validates :cooking_time, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   # valudates :preperation_time, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-
-  def total
-    price = 0
-    recipe_foods.each { |food_item| price += food_item.quantity * food_item.food.price }
-  end
 end

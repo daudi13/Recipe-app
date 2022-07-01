@@ -1,19 +1,19 @@
 <section class="public_recipe_container">
   <div class="row">
-    <% if @recipes.empty? %>
+    <% if @public_recipe.empty? %>
       <h2>You don't have any existing recipe of your own!</h2>
     <% else %>
-      <% @recipes.each do |recipe| %>
+      <% @public_recipe.each do |public| %>
         <div class="block">
           <div class="public_recipe">
               <div class="recipe-box public">
                 <div class="recipe-left">
-                  <h4 class="recipe-name"><%= recipe.name %></h4>
-                  <span class="recipe-author">By: <strong><%= recipe.user.name %></strong></span>
+                  <h4 class="recipe-name"><%= public[:recipe].name %></h4>
+                  <span class="recipe-author">By: <strong><%= public[:recipe].user.name %></strong></span>
                 </div>
                 <div class="right">
-                  <span class="number-food">Total food items: <strong><%= @recipe_foods.length %></strong></span>
-                  <span class="total-price">Total price: <strong>$<%= @recipes.name %>.00</strong></span>
+                  <span class="number-food">Total food items: <strong><%= public[:foods_quantity] %></strong></span>
+                  <span class="total-price">Total price: <strong>$<%= public[:price_total]  %>0</strong></span>
                 </div>
               </div>
             </div>
