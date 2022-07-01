@@ -69,14 +69,8 @@
   max-width: 400px !important;
 }
 
-
 .right {
   display: flex;
   flex-direction: column;
   padding: 0 0 1.5rem;
 }
-
-.public {
-  align-items: center;
-}
-
