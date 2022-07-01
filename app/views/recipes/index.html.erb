@@ -1,12 +1,12 @@
 <section class='recipe-container'>
 
 <div class="recipe--header">
-<h1>Recipes</h1>
+<h2 class='text-4xl font-semibold font-serif my-6 text-center'>My Recipes</h2>
 
 <div class="flex flex-col mx-6 mt-6 gap-12">
   <div class="w-full text-right pr-6">
     <%=form_with model: Recipe.new, url: new_recipe_path, method: :get do %>
-      <button class="px-4 py-2 shadow-md shadow-black">Add recipe</button>
+      <button class='border px-2 py-1 rounded bg-green-400 hover:bg-green-200 w-fit font-medium text-white hover:text-green-800 cursor-pointer'>Add recipe</button>
     <% end %>
   </div>
 </div>
@@ -14,16 +14,16 @@
 
 <div class="recipe--wrapper">
 <% @recipes.each do |recipe| %>
-  <div class="recipe-box">
-  <div class="recipe-left">
+  <div class='border border-neutral-800 p-6 flex justify-between'>
+  <div class='flex flex-col items-start'>
   <%= link_to recipe_path(recipe) do %>
-    <h6><%= recipe.name %></h6>
+    <h6 class='text-2xl font-bold'><%= recipe.name %></h6>
   <%end%>
   <%=form_with model: Recipe.new, url: recipe_path(recipe), method: :delete do %>
-    <button class="px-2 py-1">remove</button>
+    <button class='border rounded bg-red-500 px-2 py-1 mt-2 hover:bg-red-200 hover:text-red-800'>remove</button>
   <%end%>
 </div>
-<div class="recipe-right">
+<div class='flex flex-col items-start '>
   <p>
     <%= recipe.description %>
   </p>
