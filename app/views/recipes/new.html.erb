@@ -1,4 +1,7 @@
-<h1 class="text-l font-bold w-full text-center mt-12">Create new recipe</h1>
+<div class='flex justify-between'>
+  <%= link_to "Back to recipes", recipes_path, class:'border rounded bg-neutral-200 px-2 py-1 hover:bg-neutral-400 my-6' %>
+</div>
+<h1 class='text-4xl font-semibold font-serif text-center'>Create new recipe</h1>
 
 <% if @recipe.errors.any? %>
         <ul>
@@ -8,25 +11,24 @@
         </ul>
 <% end %>
 <%= form_for @recipe do |f| %>
-    <div class="recipe-form">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "input" %>
-        <div class="inline-block">
-        <%= f.label :description, class: "input" %>
+    <div class='mt-4 flex items-center justify-center'>
+        <%= f.label :name , style: "display: block", class:'font-semibold text-xl'%>
+        <%= f.text_field :name, class:'border px-2 py-1 rounded-md mt-2 ml-10' %>
         </div>
-        <%= f.text_area :description, class: "input" %>
-        <div class="inline-block">
-            <%= f.label :preparation_time, class: "input" %>
-            <%= "(minutes)" %>
+        <div class='mt-4  flex items-center justify-center'>
+        <%= f.label :description,  style: "display: block", class:'font-semibold text-xl' %>
+        <%= f.text_area :description, class:'w-60 h-20 border rounded-md p-2 mt-2 ml-6' %>
         </div>
-        <%= f.text_field :preparation_time, class: "input" %>
-        <div class="inline-block">
-            <%= f.label :cooking_time, class: "input" %>
-            <%= "(minutes)" %>
+        <div class='mt-4  flex items-center justify-center'>
+            <%= f.label :preparation_time, style: "display: block", class:'font-semibold text-xl' %>
+            <%= f.number_field :preparation_time, class:'border px-2 py-1 rounded-md mt-2 ml-6' %>
         </div>
-        <%= f.text_field :cooking_time, class: "input" %>
-        <div class=" flex w-full bg-sky-500 cursor-pointer text-white font-medium justify-center py-2">
-          <%= f.submit %>
+        <div class='mt-4  flex items-center justify-center'>
+            <%= f.label :cooking_time, style: "display: block", class:'font-semibold text-xl' %>
+           <%= f.number_field :cooking_time, class:'border px-2 py-1 rounded-md mt-2 ml-10' %>
+        </div>
+        <div class='mt-4  flex items-center justify-center'>
+          <%= f.submit 'Add recipe', class:'border px-2 py-1 rounded bg-green-400 hover:bg-green-200 w-fit font-medium text-white hover:text-green-800 cursor-pointer' %>
         </div>
     </div>
 <% end %>
