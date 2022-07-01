@@ -23,41 +23,49 @@
       </div>
 </div>
 <div class="buttons">
-<button class="rounded px-4 py-2 shadow-sm border-2">Generate shopping list</button>
+<button class="rounded px-4 py-2 shadow-sm border-2" >Generate shopping list</button>
 <%=form_with model: RecipeFood.new, url: new_recipe_recipe_food_path(@recipe), method: :get do %>
   <button class="rounded px-4 py-2 shadow-sm border-2">Add ingredient</button>
 <%end%>
 </div>
 
-<table class="table table-striped table-hover">
-  <thead>
+<hr class="divider">
+<% if  @recipe.recipe_foods.empty? %>
+    <p class='italic'>
+      No ingredients have been added to this recipe yet.
+    </p>
+  <% else %>
+<table class="table table-hover table-striped table-bordered">
+  <thead class="bg-color">
     <tr>
-      <th scope="col">Food</th>
+      <th scope="col">Ingredient</th>
       <th scope="col">Quantity</th>
-      <th scope="col">value</th>
+      <th scope="col">Value</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Apple</td>
-      <td>20g</td>
-      <td>$10</td>
-      <td><a href="#">Modify</a> <a href="#">Remove</a></td>
-      </tr>
-      <tr>
-      <td>Pinneaple</td>
-      <td>10g</td>
-      <td>$10</td>
-      <td><a href="#">Modify</a> <a href="#">Remove</a></td>
-      </tr>
-      <tr>
-      <td>Chicken breast</td>
-      <td>10g</td>
-      <td>$100</td>
-      <td><a href="#">Modify</a> <a href="#">Remove</a></td>
-    </tr>
+    <% if @recipe.recipe_foods.length === 0 %>
+        <tr class="text-center">
+          <td colspan="4">No ingredients found</td>
+        </tr>
+        <% else %>
+          <% @recipe.recipe_foods.each do |ing| %>
+            <tr class="text-center">
+              <td class='border border-slate-600'><%= ing.food.food%></td>
+              <td class='border border-slate-600'><%= ing.quantity %> <%= ing.food.measurement_unit %></td>
+              <td class='border border-slate-600'>$<%= (ing.food.unit_price * ing.quantity).round(2) %></td>
+              <% if user_signed_in? %>
+                <td class='flex justify-evenly border border-slate-600 pt-4 pb-4'>
+                  <%= link_to "Modify", edit_recipe_food_path(ing), class: 'my-0 border rounded bg-blue-600 text-white px-2 py-1 hover:bg-neutral-400 my-6' %>
+                  <%= button_to "Delete", ing, method: :delete, class: 'my-0 border rounded bg-red-500 text-white px-2 py-1 hover:bg-neutral-400 my-6' %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
   </tbody>
 </table>
+<% end %>
 
 </section>

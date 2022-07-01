@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get 'shopping_lists', to: 'shopping_lists#index'
+  get 'recipe_foods/:recipe_id', to: 'recipe_foods#new'
+  post 'recipe_foods/:recipe_id', to: 'recipe_foods#create'
+  resources :recipe_foods, only: [:destroy, :update, :edit]
 
 
   # Defines the routes for the Users controller
