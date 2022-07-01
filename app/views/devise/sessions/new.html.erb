@@ -1,23 +1,29 @@
-<div  class="form-heading">
-  <h2>Log in</h2>
-  <hr style="margin: 5px auto;">
-</div>
+<div class='absolute top-0 left-0 h-screen w-screen flex flex-col justify-center items-center bg-slate-800 -z-10'>
+<div class='flex flex-col justify-center items-center bg-slate-50 px-6 py-3 rounded-lg'>
+<h2 class='text-xl font-semibold font-serif'>Log in</h2>
 
-<div class="form-group">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
-  <div class="field">
-    <%= f.email_field :email, autocomplete: "email", placeholder: "Email" %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field flex flex-col mt-2">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'w-96 px-2 py-1 border rounded-md' %>
   </div>
 
-  <div class="field">
-    <%= f.password_field :password, placeholder: "Password" %>
+  <div class="field flex flex-col mt-2">
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "current-password", class:'w-96 px-2 py-1 border rounded-md' %>
   </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field flex items-center gap-2 mt-2">
+      <%= f.label :remember_me %>
+      <%= f.check_box :remember_me, class:'h-4 w-4' %>
+    </div>
+  <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class:'rounded bg-green-600 text-slate-50 w-full py-1 text-lg hover:bg-green-200 hover:text-green-800 cursor-pointer mt-2' %>
   </div>
-  <div class="extras">
-    <%= render "devise/shared/links" %>
-  </div> 
 <% end %>
+<%= render "devise/shared/links" %>
+</div>
 </div>
