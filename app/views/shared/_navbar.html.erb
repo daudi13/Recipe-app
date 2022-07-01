@@ -1,30 +1,29 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light ">
-  <div class="container-fluid">
-    <%= link_to 'Recipe App', '/', class:'navbar-brand' %>
-    <div class="navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ms-auto ">
-        <li class="nav-item">
-          <%= link_to "Public recipes", root_path ,class:'navbar-brand  ' %>
+<div class="flex justify-between items-center px-8 bg-blue-400 py-2 text-xl">
+  <%= link_to 'Recipe App', '/', class:'font-semibold text-2xl font-serif' %>
+    <ul class="flex flex-row gap-x-4">
+      <li class='hover:bg-yellow-300 px-2 py-1 rounded hover:text-yellow-900'> 
+        <%= link_to 'Public Recipes', root_path %> 
+      </li>
+      <% unless user_signed_in? %>
+        <li class='hover:bg-yellow-300 px-2 py-1 rounded hover:text-yellow-900'> 
+          <%= link_to 'Sign Up', new_user_registration_path %> 
         </li>
-        <li class="nav-item">
-          <%= link_to 'My recipes', recipes_path , class:'navbar-brand  '%>
+        <li class='hover:bg-yellow-300 px-2 py-1 rounded hover:text-yellow-900'>
+          <%= link_to 'Sign In', new_user_session_path %>
         </li>
-        <% unless user_signed_in? %>
-        <li class="nav-item">
-         <%= link_to 'Sign Up', new_user_registration_path, class:'navbar-brand  ' %> 
+      <% else %>
+        <li class='hover:bg-yellow-300 px-2 py-1 rounded hover:text-yellow-900'>
+          <%= link_to 'New recipe', new_recipe_path %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Sign In', new_user_session_path, class:'navbar-brand  ' %>
+        <li class='hover:bg-yellow-300 px-2 py-1 rounded hover:text-yellow-900'>
+          <%= link_to 'My recipes', recipes_path %>
         </li>
-        <% else %>
-        <li class="nav-item">
-          <%= link_to 'New recipe', new_recipes_details_path, class:'navbar-brand  '%>
+        <li class='hover:bg-yellow-300 px-2 py-1 rounded hover:text-yellow-900'>
+          <%= link_to 'My foods', foods_path %>
         </li>
-        <li class="nav-item">
-          <%= button_to 'Sign Out', destroy_user_session_path, :method => :delete, class:'navbar-brand' %> 
+        <li class='hover:bg-yellow-300 px-2 py-1 rounded hover:text-yellow-900'> 
+          <%= button_to 'Sign Out', destroy_user_session_path, :method => :delete %> 
         </li>
-         <% end %>
-      </ul>
-    </div>
-  </div>
-</nav>
+      <% end %>
+    </ul>
+</div>

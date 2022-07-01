@@ -1,0 +1,24 @@
+<div class='flex justify-between'>
+  <%= link_to "Cancel", url_for(:back), class:'border rounded bg-neutral-200 px-2 py-1 hover:bg-neutral-400 my-6' %>
+</div>
+
+<h2 class='text-4xl font-semibold font-serif text-center'>Edit Ingredient</h2>
+
+<%= form_with( url: "/recipe_foods/#{@recipe_food.recipe_id}", method: :patch) do |form| %>
+
+  <div class='mt-4'>
+    <%= form.label :food_id, style: "display: block", class:'font-semibold text-xl mb-4' %>
+    <span class="text-xl text-orange-700">
+      <%= @recipe_food.food.food %>
+    </span>
+  </div>
+  
+  <div class='mt-4'>
+    <%= form.label :quantity, style: "display: block", class:'font-semibold text-xl mb-4' %>
+    <%= form.number_field :quantity, class:'border px-2 py-1 rounded-md mt-2'  %>
+  </div>
+
+  <div class='mt-4'>
+    <%= form.submit 'Confirm', class:'border px-2 py-1 rounded bg-green-400 hover:bg-green-200 w-fit font-medium text-white hover:text-green-800 cursor-pointer'%>
+  </div>
+<% end %>

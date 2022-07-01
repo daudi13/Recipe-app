@@ -48,6 +48,11 @@ class RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
+  def shopping_list
+    @ingredient = RecipeFood.where(recipe_id: params[:recipe_id])
+    @total_price = @ingredient.inject(0) { |sum, e| sum + (e.food.unit_price * e.quantity) }
+  end
+
   private
 
   def autheniticate_and_show!(recipe)

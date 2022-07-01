@@ -1,8 +1,11 @@
-<div class="foods-btn">
-  <h2>Food List</h2>
-  <%= link_to 'Add Food', new_food_path, class:'btn btn-brand  ' %>
-</div>
+<% if user_signed_in? %>
+  <div class="flex flex-row justify-end text-center text-lg">
+    <%= link_to 'Add New Food', new_food_path, class: 'border rounded bg-green-500 text-white px-2 py-1 hover:bg-neutral-400 my-6' %>
+  </div>
+<% end %>
+<h1 class="text-center text-lg font-black">Food List</h1>
 
+<hr class="divider">
 <table class="table table-hover table-striped table-bordered">
   <thead class="bg-color">
     <tr>
