@@ -11,6 +11,8 @@
 ## Getting started
 
 - Run `bundle install` to get the dependecies
+- Run `rails db:create` to create a local database
+- Run `rails db:migrate` to run migration 
 - Run `rails s` to start  the server
 - Open `https://localhost:3000` in your browser
 - to run test `bundle exec rspec`
