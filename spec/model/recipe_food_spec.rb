@@ -25,10 +25,10 @@ RSpec.describe RecipeFood, type: :model do
   end
 
   it 'should have a quantity' do
-  @recipe_food.quantity = nil
-  expect(@recipe_food).to_not be_valid
-  
-  @recipe_food.quantity = '10'
-  expect(@recipe_food).to be_valid
+    @recipe_food.quantity = nil
+    expect(@recipe_food).to_not be_valid
+
+    @recipe_food.quantity = '10'
+    expect(@recipe_food).to be_valid
   end
 end
