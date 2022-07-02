@@ -34,7 +34,8 @@ RSpec.describe Recipe, type: :model do
     @recipe.user = nil
     expect(@recipe).to_not be_valid
 
-    @recipe.user = User.create(name: 'Test', email: 'test@mail.com', password: 'password', password_confirmation: 'password')
+    @recipe.user = User.create(name: 'Test', email: 'test@mail.com', password: 'password',
+                               password_confirmation: 'password')
     expect(@recipe).to be_valid
   end
 
