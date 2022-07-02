@@ -70,8 +70,8 @@ group :development do
 end
 
 group :development, :test do
-  gem "database_cleaner"
-  gem "rspec-rails"
+  gem 'database_cleaner'
+  gem 'rspec-rails'
 end
 
 group :test do
