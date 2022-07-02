@@ -1,0 +1,71 @@
+<section class="recipe-details">
+<h2 class='text-center text-4xl font-bold'><%=@recipe.name %></h2>
+
+<div class="header-container">
+<div class="description">
+<h6 class='text-xl'>preperation time: <%=@recipe.cooking_time %></h6>
+<h6 class='text-xl'>Cooking time: <%=@recipe.cooking_time %></h6>
+<h6 class='text-xl'>steps: <%=@recipe.description %></h5>
+</div>
+
+<div>
+        <% if current_user.present? && current_user.id == @recipe.user.id %>
+          <%=form_with url: recipe_path(@recipe), method: "patch", class: "inline-flex relative items-center gap-3" do %>
+            <span class="ml-3 text-gray-900 dark:text-gray-300 font-bold">Public</span>
+            <label for="public-toggle" class="inline-flex relative items-center cursor-pointer">
+              <%= check_box_tag 'public' , @recipe.public, @recipe.public, class: 'sr-only peer' , id: "public-toggle" , onchange: "this.form.submit()" %>
+                <div
+                  class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600">
+                </div>
+            </label>
+          <% end %>
+        <% end %>
+      </div>
+</div>
+<div class="buttons">
+        <a href="/shopping_list/<%= @recipe.id %>" class="rounded px-4 py-2 shadow-sm border-2">Generate Shopping List</a>
+<%=form_with model: RecipeFood.new, url: new_recipe_recipe_food_path(@recipe), method: :get do %>
+  <button class="rounded px-4 py-2 shadow-sm border-2">Add ingredient</button>
+<%end%>
+</div>
+
+<hr class="divider">
+<% if  @recipe.recipe_foods.empty? %>
+    <p class='italic'>
+      No ingredients have been added to this recipe yet.
+    </p>
+  <% else %>
+<table class="table table-hover table-striped table-bordered">
+  <thead class="bg-color">
+    <tr>
+      <th scope="col">Ingredient</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Value</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @recipe.recipe_foods.length === 0 %>
+        <tr class="text-center">
+          <td colspan="4">No ingredients found</td>
+        </tr>
+        <% else %>
+          <% @recipe.recipe_foods.each do |ing| %>
+            <tr class="text-center">
+              <td class='border border-slate-600'><%= ing.food.food%></td>
+              <td class='border border-slate-600'><%= ing.quantity %> <%= ing.food.measurement_unit %></td>
+              <td class='border border-slate-600'>$<%= (ing.food.unit_price * ing.quantity).round(2) %></td>
+              <% if user_signed_in? %>
+                <td class='flex justify-evenly border border-slate-600 pt-4 pb-4'>
+                  <%= link_to "Modify", edit_recipe_food_path(ing), class: 'my-0 border rounded bg-blue-600 text-white px-2 py-1 hover:bg-neutral-400 my-6' %>
+                  <%= button_to "Delete", ing, method: :delete, class: 'my-0 border rounded bg-red-500 text-white px-2 py-1 hover:bg-neutral-400 my-6' %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
+  </tbody>
+</table>
+<% end %>
+
+</section>

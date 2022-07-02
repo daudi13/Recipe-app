@@ -1,0 +1,38 @@
+<div class='absolute top-0 left-0 h-screen w-screen flex flex-col justify-center items-center bg-slate-800 -z-10'>
+  <div class='flex flex-col justify-center items-center bg-slate-50 px-6 py-3 rounded-lg'>
+    <h2 class='text-xl font-semibold font-serif'>Sign up</h2>
+    
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="field flex flex-col mt-2">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, class:'w-96 px-2 py-1 border rounded-md' %>
+      </div>
+
+      <div class="field flex flex-col mt-2">
+        <%= f.label :email %>
+        <%= f.email_field :email, autocomplete: "email", class:'w-96 px-2 py-1 border rounded-md' %>
+      </div>
+    
+      <div class="field flex flex-col mt-2">
+        <div>
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+        </div>
+        <%= f.password_field :password, autocomplete: "new-password", class:'w-96 px-2 py-1 border rounded-md' %>
+      </div>
+    
+      <div class="field flex flex-col mt-2">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'w-96 px-2 py-1 border rounded-md' %>
+      </div>
+      <%= render "devise/shared/error_messages", resource: resource %>
+    
+      <div class="actions">
+        <%= f.submit "Register", class:'rounded bg-green-600 text-slate-50 w-full py-1 text-lg hover:bg-green-200 hover:text-green-800 cursor-pointer mt-2' %>
+      </div>
+    <% end %>
+    <%= link_to 'Cancel', url_for(:back), class:'rounded bg-red-600 text-slate-50 w-full py-1 text-lg hover:bg-red-200 hover:text-red-800 cursor-pointer mt-2 text-center' %>
+  </div>
+</div>

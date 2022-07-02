@@ -1,0 +1,34 @@
+<div class='flex justify-between'>
+  <%= link_to "Back to recipes", recipes_path, class:'border rounded bg-neutral-200 px-2 py-1 hover:bg-neutral-400 my-6' %>
+</div>
+<h1 class='text-4xl font-semibold font-serif text-center'>Create new recipe</h1>
+
+<% if @recipe.errors.any? %>
+        <ul>
+            <% @recipe.errors.full_messages.each do |m| %>
+                <li><%= m %></li>
+            <% end %>
+        </ul>
+<% end %>
+<%= form_for @recipe do |f| %>
+    <div class='mt-4 flex items-center justify-center'>
+        <%= f.label :name , style: "display: block", class:'font-semibold text-xl'%>
+        <%= f.text_field :name, class:'border px-2 py-1 rounded-md mt-2 ml-10' %>
+        </div>
+        <div class='mt-4  flex items-center justify-center'>
+        <%= f.label :description,  style: "display: block", class:'font-semibold text-xl' %>
+        <%= f.text_area :description, class:'w-60 h-20 border rounded-md p-2 mt-2 ml-6' %>
+        </div>
+        <div class='mt-4  flex items-center justify-center'>
+            <%= f.label :preparation_time, style: "display: block", class:'font-semibold text-xl' %>
+            <%= f.number_field :preparation_time, class:'border px-2 py-1 rounded-md mt-2 ml-6' %>
+        </div>
+        <div class='mt-4  flex items-center justify-center'>
+            <%= f.label :cooking_time, style: "display: block", class:'font-semibold text-xl' %>
+           <%= f.number_field :cooking_time, class:'border px-2 py-1 rounded-md mt-2 ml-10' %>
+        </div>
+        <div class='mt-4  flex items-center justify-center'>
+          <%= f.submit 'Add recipe', class:'border px-2 py-1 rounded bg-green-400 hover:bg-green-200 w-fit font-medium text-white hover:text-green-800 cursor-pointer' %>
+        </div>
+    </div>
+<% end %>

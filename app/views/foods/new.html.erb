@@ -1,0 +1,35 @@
+<div  class="font-bold">
+  <h2 style="margin: 15px auto;">Add New Food</h2>
+  <hr style="margin: 5px auto;">
+</div>
+
+<div class="form-group">
+  <%= form_with(model: @food) do |f| %>
+  <% if @food.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(food.errors.count, "error") %> prohibited this food from being saved:</h2>
+
+      <ul>
+        <% @food.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class='mt-4'>
+    <%= f.label :food, style: "display: block", class:'font-semibold text-xl' %>
+    <%= f.text_field :food, class:'border px-2 py-1 rounded-md mt-2' %>
+    </div>
+    <div class='mt-4'>
+    <%= f.label :measurement_unit, style: "display: block", class:'font-semibold text-xl' %>
+    <%= f.text_field :measurement_unit, class:'border px-2 py-1 rounded-md mt-2' %>
+    </div>
+    <div class='mt-4'>
+    <%= f.label :unit_price, style: "display: block", class:'font-semibold text-xl' %>
+    <%= f.number_field :unit_price, class:'border px-2 py-1 rounded-md mt-2' %>
+    </div>
+    <div class='mt-4'>
+     <%= f.submit 'Add food', class:'border px-2 py-1 rounded bg-green-400 hover:bg-green-200 w-fit font-medium text-white hover:text-green-800 cursor-pointer' %>
+    </div>
+  <% end %>
+<div> 
